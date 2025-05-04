@@ -119,13 +119,17 @@ export default function Quiz() {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
     >
-      <motion.h2 
+      {/* <motion.h2 
         className="text-3xl md:text-4xl font-bold text-center mb-12 font-display"
         variants={itemVariants}
       >
         <span className="heading-gradient">Test Your</span> AI Detection Skills (Pseudo Turing)
       </motion.h2>
-      
+       */}
+
+<h2 className="text-3xl md:text-4xl font-bold text-center mb-12 font-display">
+        <span className="heading-gradient">Test Your</span> AI Detection Skills
+      </h2>
       <motion.div 
         className="max-w-3xl mx-auto bg-primary rounded-xl p-8 shadow-2xl"
         variants={itemVariants}

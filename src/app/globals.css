@@ -1,26 +1,248 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* สีพื้นฐาน */
+  --background: #10131f; /* ปรับให้เป็นสีเทา-น้ำเงินเข้มที่นุ่มกว่า */
+  --foreground: #dfe2f0; /* สีข้อความสว่างแต่ไม่จัดจ้าน */
+  
+  /* สีของ card */
+  --card-background: #171c2d; /* สีพื้นหลังของการ์ดที่อ่อนลง */
+  --card-background-alt: #1c2135; /* สีพื้นหลังสลับของการ์ด */
+  --card-border: #252b3d; /* สีขอบการ์ดที่ดูนุ่มนวลขึ้น */
+  
+  /* สีเน้น (accent) - ปรับให้อ่อนลงแต่ยังคงความชัดเจน */
+  --accent-color: #5580f9; /* สีฟ้าที่อ่อนลงเล็กน้อย */
+  --accent-hover: #6990ff; /* สีเมื่อ hover */
+  --accent-gradient-start: #5580f9;
+  --accent-gradient-end: #82d1c8; /* สีเทอร์ควอยซ์ที่อ่อนลง */
+  
+  /* สีตกแต่งเพิ่มเติม */
+  --highlight: #e17aa2; /* สีชมพูอ่อนลงอีก */
+  --success: #5bcc9f; /* สีเขียวที่อ่อนลง */
+  --warning: #f0b86e; /* สีส้มอ่อนลง */
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+.content-container {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.section-spacing {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* ปรับ section-background ให้มีความทึบที่พอเหมาะ ไม่มากเกินไป */
+.section-background {
+  background-color: var(--card-background);
+  border-radius: 0.6rem;
+  /* ปรับเงาให้นุ่มนวลขึ้น */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--card-border);
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* ลดความหนาลง */
+  background: linear-gradient(to right, var(--accent-gradient-start), var(--accent-gradient-end));
+  opacity: 0.8; /* ลดความเข้มลงเล็กน้อย */
+}
+
+/* ปรับ section-background-alt */
+.section-background-alt {
+  background-color: var(--card-background-alt);
+  border-radius: 0.6rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--card-border);
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-background-alt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--highlight), var(--accent-gradient-end));
+  opacity: 0.8;
+}
+
+.heading-gradient {
+  background-image: linear-gradient(to right, var(--accent-gradient-start), var(--accent-gradient-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600; /* ไม่ต้องหนาเกินไป */
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px; /* บางลง */
+  background: linear-gradient(to right, var(--accent-gradient-start), var(--accent-gradient-end));
+  transform-origin: 0%;
+  z-index: 100;
+  opacity: 0.8;
+}
+
+/* Timeline styles */
+.timeline-circle {
+  background-color: var(--card-background);
+  border: 1.5px solid var(--accent-color); /* บางลง */
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500; /* ไม่หนาเกินไป */
+  box-shadow: 0 0 8px rgba(85, 128, 249, 0.25); /* เงาอ่อนลง */
+}
+
+.timeline-connector {
+  background: linear-gradient(to bottom, var(--accent-gradient-start), var(--accent-gradient-end));
+  width: 1.5px; /* บางลง */
+  height: 90px;
+  margin: 0 auto;
+  opacity: 0.7; /* อ่อนลง */
+}
+
+/* ปุ่ม - ลดความสว่างลงแต่ยังคงความเด่นชัด */
+button, .button {
+  background: linear-gradient(to right, var(--accent-gradient-start), var(--accent-color));
+  color: white;
+  padding: 0.65rem 1.3rem;
+  border-radius: 0.4rem;
+  font-weight: 500; /* ไม่หนาเกินไป */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  /* ปรับเงาให้อ่อนลง */
+  box-shadow: 0 3px 8px rgba(85, 128, 249, 0.25);
+}
+
+button:hover, .button:hover {
+  background: linear-gradient(to right, var(--accent-color), var(--accent-hover));
+  box-shadow: 0 4px 10px rgba(85, 128, 249, 0.3);
+  transform: translateY(-1px); /* ลดการเคลื่อนไหว */
+}
+
+/* Form elements - สร้างความชัดเจนแต่ไม่จัดจ้านเกินไป */
+input, textarea, select {
+  background-color: rgba(15, 18, 30, 0.4); /* ทึบพอประมาณ */
+  border: 1px solid var(--card-border);
+  color: var(--foreground);
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.4rem;
+  width: 100%;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08); /* เงาอ่อนลง */
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 1px rgba(85, 128, 249, 0.15); /* ลดความเข้ม */
+}
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.4rem; /* บางลง */
+  background: linear-gradient(to right, var(--accent-gradient-start), var(--accent-gradient-end));
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15); /* ลดความเข้ม */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.2rem; /* เล็กลง */
+  height: 1.2rem;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* เงาอ่อนลง */
+}
+
+/* ปรับ card-item ให้ดูนุ่มนวล */
+.card-item {
+  background-color: var(--card-background);
+  border-radius: 0.5rem;
+  border: 1px solid var(--card-border);
+  padding: 1.4rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* เงาอ่อนลง */
+}
+
+/* ปรับ divider ให้ดูละเอียด */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent); /* อ่อนลง */
+  margin: 1.5rem 0;
+  opacity: 0.5; /* โปร่งใสมากขึ้น */
+}
+
+/* สำหรับจัดการพื้นหลังโทนเดียวให้ดูชัดเจนขึ้น */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.content-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(85, 128, 249, 0.05), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* สำหรับปุ่มที่ต้องการให้เบาลง */
+.button-light {
+  background: rgba(85, 128, 249, 0.15);
+  color: var(--accent-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  font-weight: 500;
+  border: 1px solid rgba(85, 128, 249, 0.2);
+  transition: all 0.2s ease;
+  box-shadow: none;
+}
+
+.button-light:hover {
+  background: rgba(85, 128, 249, 0.2);
+  border-color: rgba(85, 128, 249, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(85, 128, 249, 0.1);
 }

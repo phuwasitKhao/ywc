@@ -119,7 +119,7 @@ export default function StrengthsLimitations() {
       
       <div className="flex justify-center mb-12">
         <motion.div 
-          className="bg-primary p-1 rounded-full flex"
+          className="bg-primary p-1 rounded-full flex gap-5"
           variants={itemVariants}
         >
           <button

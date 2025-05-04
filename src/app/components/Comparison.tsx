@@ -31,19 +31,19 @@ const comparisonData: ComparisonItem[] = [
       creator: 'Human',
     }
   },
-  {
-    type: 'Art/Design',
-    aiContent: {
-      imageUrl: '/images/ai-art.jpg',
-      title: 'Futuristic Cityscape',
-      creator: 'AI',
-    },
-    humanContent: {
-      imageUrl: '/images/human-art.jpg',
-      title: 'Urban Dreams',
-      creator: 'Human',
-    }
-  },
+//   {
+//     type: 'Art/Design',
+//     aiContent: {
+//       imageUrl: '/images/ai-art.jpg',
+//       title: 'Futuristic Cityscape',
+//       creator: 'AI',
+//     },
+//     humanContent: {
+//       imageUrl: '/images/human-art.jpg',
+//       title: 'Urban Dreams',
+//       creator: 'Human',
+//     }
+//   },
   {
     type: 'Code Snippet',
     aiContent: {
@@ -251,10 +251,10 @@ export default function Comparison() {
               background: getSliderBackground(),
             }}
           />
-          <div className="flex justify-between text-xs text-gray-400 mt-1">
+          {/* <div className="flex justify-between text-xs text-gray-400 mt-1">
             <span>AI Content</span>
             <span>Human Content</span>
-          </div>
+          </div> */}
         </div>
         
         {!revealed && (

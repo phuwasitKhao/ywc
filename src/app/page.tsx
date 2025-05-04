@@ -111,7 +111,7 @@ import Comparison from '../app/components/Comparison'
 import Quiz from '../app/components/Quiz'
 import StrengthsLimitations from '../app/components/StrengthsLimitations'
 import Timeline from '../app/components/Timeline'
-import CallToAction from '../app/components/CallToAction'
+// import CallToAction from '../app/components/CallToAction'
 import ParticleBackground from '../app/components/ParticleBackground'
 
 export default function Home() {
@@ -125,7 +125,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen flex flex-col items-center justify-start relative overflow-hidden gap-4"> 
       <motion.div 
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
