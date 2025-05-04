@@ -117,7 +117,6 @@ import ParticleBackground from '../app/components/ParticleBackground'
 export default function Home() {
   const { scrollYProgress } = useScroll()
   
-  // Disable default cursor
   useEffect(() => {
     document.documentElement.classList.add('no-cursor')
     
@@ -125,7 +124,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start relative overflow-hidden gap-4"> 
+    <main className="min-h-screen flex flex-col items-center justify-start relative overflow-hidden gap-4 "> 
       <motion.div 
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
@@ -137,7 +136,7 @@ export default function Home() {
         <Hero />
       </section>
       
-      <section id="comparison" className="section-spacing bg-primary-light">
+      <section id="comparison" className="section-spacing">
         <Comparison />
       </section>
       
@@ -145,7 +144,7 @@ export default function Home() {
         <Quiz />
       </section>
       
-      <section id="strengths-limitations" className="section-spacing bg-primary-light">
+      <section id="strengths-limitations" className="section-spacing">
         <StrengthsLimitations />
       </section>
       
